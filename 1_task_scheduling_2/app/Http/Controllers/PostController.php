@@ -38,10 +38,22 @@ class PostController extends Controller
         $currentTime = now();
         Log::info('Current Time: ' . $currentTime); // This will log the current time to storage/logs/laravel.log
        // $posts = Post::all();
-       $posts = Post::where('status', false)->get();
-        // $posts = Post::where('status', true)
-        // ->where('publish_at', '<=', now())
-        // ->get();
+     //  $posts = Post::where('status', false)->get();
+          $posts = Post::where('status', true)
+         ->where('publish_at', '<=', now()->setTimezone('Asia/Karachi'))
+         ->get();
+
+foreach ($posts as $post) {
+  
+    echo 'Publish At: ' . $post->publish_at . '<br>';
+}
+         echo date_default_timezone_get();
+         echo "<br>";
+
+         echo now(); // Current time in the configured timezone
+         echo "<br>";
+$currentTime = now()->setTimezone('Asia/Karachi'); // Replace 'UTC' with your desired timezone
+ echo $currentTime;
 
         return view('posts.index', compact('posts'));
     }
