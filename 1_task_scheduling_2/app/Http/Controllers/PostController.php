@@ -39,8 +39,7 @@ class PostController extends Controller
         Log::info('Current Time: ' . $currentTime); // This will log the current time to storage/logs/laravel.log
        // $posts = Post::all();
      //  $posts = Post::where('status', false)->get();
-          $posts = Post::where('status', true)
-         ->where('publish_at', '<=', now()->setTimezone('Asia/Karachi'))
+          $posts = Post::where('status', true)->where('publish_at', '<=', now()->setTimezone('Asia/Karachi'))
          ->get();
 
 foreach ($posts as $post) {

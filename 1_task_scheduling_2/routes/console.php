@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Schedule;
 use App\Models\Post;
 
 Schedule::call(function () {
-    Log::info('Task executed!');
+    // Log::info('Task executed!');
     // Find all posts that are not yet published but need to be published
     $posts = Post::where('status', false)
                  ->where('publish_at', '<=',  now()->setTimezone('Asia/Karachi'))
@@ -24,7 +24,7 @@ Schedule::call(function () {
 // The rest of your code will still execute
 
     // Update the status of each post to 'published'
-    foreach ($posts as $post) {
-        $post->update(['status' => true]);
-    }
+    // foreach ($posts as $post) {
+    //     $post->update(['status' => true]);
+    // }
 })->everyTenSeconds(); // Adjust frequency as needed, for example: ->dailyAt('00:00') to run at midnight
